@@ -2,13 +2,17 @@ class Node:
     def __init__(self,data):
         self.data = data
         self.next = None
-        
+
 #creacion de len(), putFront(n) y sort()(después)
 #putFront es sacar de la posición n y poner al inicio
 class LinkedList: 
-    def __init__ (self ):
-        self.head = None
-
+    def __init__(self):
+        self.head = Node(None)
+        self.tail = Node(None)
+        self.head.next = self.tail
+        self.tail.next = self.head
+        self.count = 0
+#no c
     def display(self,head):
         current = head
         while current:
@@ -17,15 +21,16 @@ class LinkedList:
         print() #espacio en blanco 
 
     def insert(self,head,data): 
-        if head == None:
+        if self.head == None:
             nextNode = Node(data)
             return nextNode
-        elif head.next == None:
+        elif self.headhead.next == None:
             nextNode_ = Node(data)
-            head.next = nextNode_
-            return head
+            self.head.next = nextNode_
+            return self.headhead
         else:
             self.insert(head.next, data)
+<<<<<<< HEAD
         return head
         
     def popFront(self):
@@ -55,6 +60,65 @@ class LinkedList:
 
           #U.U  
             
+=======
+        return head   
+
+    def pushFront(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    def pushBack(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head= new_node
+        n=self.head
+        while n.next is not None:
+            n=n.next
+        n.next=new_node
+    
+    def popFront(self, head):
+        if self.head != None:
+            return None
+            
+        r = self.head
+        head = head.next
+        print ('popfronted ', r)
+        return head
+
+    def popBack(self):
+        n = self.head
+        while n.next.next is not None:
+            n=n.next
+        n.next = None
+
+    def size (self ):
+       current = self.head
+       count = 0
+       while current:
+           count +=1
+           current =  current.next
+           return count
+                
+     def sort(self):
+        current=self.head
+        index = None
+
+        if(self.head == None):
+            return
+        else:
+            while(current!=None):
+                index = current.next #El index ahora apunta al siguiente de current
+
+                while(index!= None):
+                    if (current.data > index.data): #Si la data del nodo actual es mayor que la del index, intercambiaran posicion
+                        temp = current.data
+                        current.data = index.data
+                        index.data = temp
+                    index=index.next
+                current = current.next
+                
+>>>>>>> 5a5f2494d406cdbfed02eb97eaa6120feadf2ebe
 #tocar, pero poquito  :D
 #hay que mover la asignación de las variables locales dentro de los casos
 global jugadores
@@ -127,6 +191,3 @@ for i in range(jugadores.len(headJugadores)):
         
     
     
-
-
-
