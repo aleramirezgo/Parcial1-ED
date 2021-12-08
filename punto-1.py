@@ -67,10 +67,25 @@ class LinkedList:
            count +=1
            current =  current.next
            return count
-        
-            
-            
-            
+                
+     def sort(self):
+        current=self.head
+        index = None
+
+        if(self.head == None):
+            return
+        else:
+            while(current!=None):
+                index = current.next #El index ahora apunta al siguiente de current
+
+                while(index!= None):
+                    if (current.data > index.data): #Si la data del nodo actual es mayor que la del index, intercambiaran posicion
+                        temp = current.data
+                        current.data = index.data
+                        index.data = temp
+                    index=index.next
+                current = current.next
+                
 #tocar, pero poquito  :D
 #hay que mover la asignación de las variables locales dentro de los casos
 global jugadores
