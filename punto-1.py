@@ -2,10 +2,17 @@ class Node:
     def __init__(self,data):
         self.data = data
         self.next = None
-        self.head = None
+
 #creacion de len(), putFront(n) y sort()(después)
 #putFront es sacar de la posición n y poner al inicio
 class LinkedList: 
+    def __init__(self):
+        self.head = Node(None)
+        self.tail = Node(None)
+        self.head.next = self.tail
+        self.tail.next = self.head
+        self.count = 0
+
     def display(self,head):
         current = head
         while current:
@@ -13,32 +20,53 @@ class LinkedList:
             current = current.next
 
     def insert(self,head,data): 
-        if head == None:
+        if self.head == None:
             nextNode = Node(data)
             return nextNode
-        elif head.next == None:
+        elif self.headhead.next == None:
             nextNode_ = Node(data)
-            head.next = nextNode_
-            return head
+            self.head.next = nextNode_
+            return self.headhead
         else:
             self.insert(head.next, data)
-        return head
-        
+        return head   
+
+    def pushFront(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    def pushBack(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head= new_node
+        n=self.head
+        while n.next is not None:
+            n=n.next
+        n.next=new_node
+    
     def popFront(self, head):
-        if head != None:
+        if self.head != None:
             return None
             
-        r = head.data
+        r = self.head
         head = head.next
         print ('popfronted ', r)
         return head
 
-    def len (self, head ):
-        x = head
-        count = 0
-        while (x):
-            count +=1
-            x = x.next
+    def popBack(self):
+        n = self.head
+        while n.next.next is not None:
+            n=n.next
+        n.next = None
+
+    def size (self ):
+       current = self.head
+       count = 0
+       while current:
+           count +=1
+           current =  current.next
+           return count
         
             
             
@@ -83,6 +111,3 @@ class Baraja(LinkedList):
         while (cartas.len()-- != 0):
             nextRound = Baraja(nextRound.player, nextRound.cartas)
     
-
-
-
